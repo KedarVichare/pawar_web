@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GGP Enterprises | Real Estate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --bg: #0d0f12;
+      --card: #161a20;
+      --accent: #c9a227;
+      --accent-hover: #e0b82e;
+      --text: #e8e6e3;
+      --text-muted: #9a9894;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    /* Header & Logo */
+    header {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+    }
+    .logo-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .logo-wrap img {
+      height: 72px;
+      width: auto;
+      object-fit: contain;
+    }
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 3rem 0 2rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+    /* Section titles */
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    /* Featured – Top 3 */
+    .featured {
+      padding: 2rem 0 3rem;
+    }
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .property-card {
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .property-card:hover {
+      border-color: rgba(201, 162, 39, 0.4);
+      transform: translateY(-2px);
+    }
+    .property-card .img-wrap {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: #1a1d24;
+    }
+    .property-card .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .property-card .body {
+      padding: 1.25rem;
+    }
+    .property-card .body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+    .btn-details {
+      display: inline-block;
+      padding: 0.6rem 1.25rem;
+      background: var(--accent);
+      color: var(--bg);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-details:hover {
+      background: var(--accent-hover);
+    }
+    /* View more – Rest 5 */
+    .view-more {
+      padding: 2rem 0 3rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .view-more h2 {
+      margin-bottom: 1.25rem;
+    }
+    .view-more-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .view-more-card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .view-more-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    /* Contact */
+    .contact {
+      padding: 2.5rem 0 3rem;
+      background: var(--card);
+      border-radius: 16px;
+      margin: 0 1.5rem 2rem;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .contact .container {
+      text-align: center;
+    }
+    .contact h2 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .contact .tagline {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    .contact-details {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem 2rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text);
+    }
+    .contact-item a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo-wrap">
+        <img src="logo_pawar_site.jpeg" alt="GGP Enterprises" />
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>GGP Enterprises</h1>
+      <p>Your trusted partner in real estate</p>
+    </div>
+  </section>
+
+  <section class="featured">
+    <div class="container">
+      <h2>Featured properties</h2>
+      <div class="featured-grid">
+        <article class="property-card">
+          <div class="img-wrap">
+            <img src="main_3/nakshatra.png" alt="Nakshatra Residency" />
+          </div>
+          <div class="body">
+            <h3>Nakshatra Residency</h3>
+            <a href="main_3/NAKSHTRA RESIDENCY BROCHURE 1.pdf" class="btn-details" download>Details</a>
+          </div>
+        </article>
+        <article class="property-card">
+          <div class="img-wrap">
+            <img src="main_3/patel_elara.png" alt="Patels Elara Elevation" />
+          </div>
+          <div class="body">
+            <h3>Patels Elara Elevation</h3>
+            <a href="main_3/PATELS ELARA ELEVATION.pdf" class="btn-details" download>Details</a>
+          </div>
+        </article>
+        <article class="property-card">
+          <div class="img-wrap">
+            <img src="main_3/patel_infina.png" alt="Patels Infinia" />
+          </div>
+          <div class="body">
+            <h3>Patels Infinia</h3>
+            <a href="main_3/PATELS INFINIA BROCHURE 1.pdf" class="btn-details" download>Details</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="view-more">
+    <div class="container">
+      <h2>View more</h2>
+      <div class="view-more-grid">
+        <div class="view-more-card">
+          <h3>Sudama Elevate</h3>
+          <a href="BROCHURE SUDAMA ELEVATE 1.pdf" class="btn-details" download>Details</a>
+        </div>
+        <div class="view-more-card">
+          <h3>Ram Ambar</h3>
+          <a href="RAM AMBAR BROCHURE copy.pdf" class="btn-details" download>Details</a>
+        </div>
+        <div class="view-more-card">
+          <h3>Patel Glory</h3>
+          <a href="PATEL GLORY BROCHURE.pdf" class="btn-details" download>Details</a>
+        </div>
+        <div class="view-more-card">
+          <h3>Patels Meadows</h3>
+          <a href="PATELS MEADOWS BROCHURE.pdf" class="btn-details" download>Details</a>
+        </div>
+        <div class="view-more-card">
+          <h3>Patel Astrum</h3>
+          <a href="PATEL ASTRUM BROCHURE 1.pdf" class="btn-details" download>Details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="container">
+      <h2>Interested?</h2>
+      <p class="tagline">Get in touch with us</p>
+      <div class="contact-details">
+        <div class="contact-item">
+          <span>Company:</span>
+          <strong>GGP Enterprises</strong>
+        </div>
+        <div class="contact-item">
+          <span>Saurabh Pawar:</span>
+          <a href="tel:+918767022687">8767022687</a>
+        </div>
+        <div class="contact-item">
+          <span>Pradip Rathod:</span>
+          <a href="tel:+919579022687">9579022687</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">GGP Enterprises — Real Estate</div>
+  </footer>
+</body>
+</html>
